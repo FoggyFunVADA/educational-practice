@@ -2,6 +2,8 @@ import enums.Priority;
 import model.User;
 import service.TaskManager;
 import enums.TaskStatus;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 // Задача:
 // Разработать систему управления задачами для команды разработки.
@@ -9,7 +11,11 @@ import enums.TaskStatus;
 // а также фильтровать задачи по исполнителю и статусу.
 
 public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
+        logger.info("Приложение запущено");
+
         User alice = new User("Alice");
         User bob = new User("Bob");
 
@@ -43,5 +49,7 @@ public class Main {
 
         System.out.println("-- Задачи с высоким приоритетом после изменения приоритетов ---");
         manager.getTasksByPriority(Priority.HIGH).forEach(System.out::println);
+
+        logger.info("Программа завершена");
     }
 }
